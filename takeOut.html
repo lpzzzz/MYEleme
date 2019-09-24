@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			* {
+				font-family: 苹方;
+			}
+			.margin-search {
+				margin-left: 15px;
+				margin-right: 15px;
+			}
+			
+			.margin-location {
+				margin-left:20px;
+				margin-right:100px;
+			}
+			
+			#dx img{
+				width: 45px;
+				height: 45px;
+			}
+			
+			#font-style{
+				/* margin-left: 0.5rem; */
+				width: 60px;
+				height: 20px;
+				margin: 0 auto;
+				font-size: 0.65rem;
+				font-family: 苹方;
+			}
+			
+			.wm-search {
+				background:#3492E9;
+			}
+			.margin-t {
+				margin-top: 30px;
+			}
+			
+			.pingzhi_dx {
+				width: 300px;
+				height: 100px;
+			}
+			
+			.text-center {
+				text-align: center;
+				font-weight: bold;
+			}
+		.text-center span {
+			display: block;
+			font-weight: normal;
+			font-size: 12px;
+			text-align: center;
+		}
+		
+		.margin-l {
+			margin-left: 10px;
+			font-weight: bold;
+		}
+		</style>
+	</head>
+
+	<body>
+		<!-- 输入快捷键 mheader 创建头导部航 -->
+		<header class="mui-bar mui-bar-nav wm-bar">
+			<h1 class="mui-title"><span class="mui-icon mui-icon-location"></span>重庆大学城市科技学院<span class="mui-icon mui-icon-arrowdown"></span></h1>
+		</header>
+		<div class="mui-content">
+			<div class="wm-search wm-serch">
+				<!-- 搜索栏 -->
+				<div class="mui-input-row mui-search margin-search">
+					<input type="text" placeholder="搜索饿了么商家或商品名称" />
+				</div>
+			</div>
+
+			<!-- 轮播图 -->
+			<div class="wm-banner">
+				<div class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!--支持循环，需要重复图片节点-->
+						<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/banner4.jpg" /></a></div>
+						<div class="mui-slider-item"><a href="#"><img src="img/banner1.jpg" /></a></div>
+						<div class="mui-slider-item"><a href="#"><img src="img/banner2.jpg" /></a></div>
+						<div class="mui-slider-item"><a href="#"><img src="img/banner3.jpg" /></a></div>
+						<div class="mui-slider-item"><a href="#"><img src="img/banner4.jpg" /></a></div>
+						<!--支持循环，需要重复图片节点-->
+						<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/banner1.jpg" /></a></div>
+					</div>
+					<!--//轮播图中间底部圆点-->
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 轮播图结束 -->
+			<!-- 商品分类mbody -->
+			<div class="mui-content">
+				<div class="mui-row">
+					<div class="mui-col-sm-1 mui-col-xs-1">
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						
+							<img src="img/1%20-%2090x90.jpg" alt="美食">
+							<p id="font-style">&nbsp;&nbsp;美食&nbsp;&nbsp;</p>
+						
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/2%20-%2090x90.jpg" alt="夜宵">
+						<p id="font-style">&nbsp;&nbsp;美食&nbsp;&nbsp;</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/3%20-%2090x90.jpg" alt="商超便利">
+						<p id="font-style">商超便利</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/4%20-%2090x90.jpg" alt="水果">
+						<p id="font-style">&nbsp;&nbsp;水果&nbsp;&nbsp;</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/5%20-%2090x90.jpg" alt="医药健康">
+						<p id="font-style">医药健康</p>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1">
+					</div>
+				</div>
+
+				<div class="mui-row">
+					<div class="mui-col-sm-1 mui-col-xs-1">
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/6%20-%2090x90.jpg" alt="浪漫鲜花">
+						<p id="font-style">浪漫鲜花</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/7%20-%2090x90.jpg" alt="跑腿代购">
+						<p id="font-style">跑腿代购</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/8%20-%2090x90.jpg" alt="汉堡披萨">
+						<p id="font-style">汉堡披萨</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/9%20-%2090x90.jpg" alt="厨房生鲜">
+						<p id="font-style">厨房生鲜</p>
+					</div>
+					<div class=" mui-col-xs-2" id="dx">
+						<img src="img/10%20-%2090x90.jpg" alt="炸鸡炸串">
+						<p id="font-style">炸鸡炸串</p>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1">
+					</div>
+				</div>
+			</div>
+			<!-- 商品分类结束 -->
+
+			<!-- 热卖美食 -->
+			<div class="wm-tj margin-t">
+				<div class="wm-tj-l">
+						<h4>热卖美食</h4>
+						<p>附近最火美食</p>
+						<img src="img/hot.png" alt="" />
+				</div>
+				<div class="wm-tj-r">
+					<div class="wm-tj-r-t">
+						<div class="wm-tj-r-t-l">
+							<h4>新店特惠</h4>
+							<p>尝尝新口味</p>
+						</div>
+						<img src="img/xinping.png" alt="" />
+					</div>
+					<div class="wm-tj-r-b">
+						<div class="wm-tj-r-b-l">
+							<h5>小吃零食</h5>
+							<p>美味小吃</p>
+							<img src="img/lingshi.png" alt="" />
+						</div>
+						<div class="wm-tj-r-b-r">
+							<h5>超时免单</h5>
+							<p>预订午餐</p>
+							<img src="img/wucan.png" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 热卖美食 结束-->
+
+			<!-- 优惠专区 -->
+			<h5 class="margin-l">优惠专区</h1>
+				<div class="mui-content">
+					<div class="mui-row">
+						<div class="mui-col-xs-6 ">
+							<div class="mui-card">
+								<!--页眉，放置标题-->
+								<div class="mui-media-body text-center">限时秒杀</div>
+								<!--内容区-->
+								<div class="mui-card-content">
+									<img src="img/yh%20(1).webp">
+								</div>
+								<!--页脚，放置补充信息或支持的操作-->
+								<div class="mui-media-body text-center">晚餐9.9元起
+									<span>17点场限时疯抢中</span>
+								</div>
+							</div>
+						</div>
+						<div class="mui-col-xs-6">
+							<div class="mui-card">
+								<!--页眉，放置标题-->
+								<div class="mui-media-body text-center">美食榜单</div>
+								<!--内容区-->
+								<div class="mui-card-content">
+									<img src="img/yh%20(2).webp">
+								</div>
+								<!--页脚，放置补充信息或支持的操作-->
+								<div class="mui-media-body text-center">正餐&夜猫餐
+									<span>会员再减6~8元</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mui-row">
+						<div class="mui-col-xs-6 ">
+							<div class="mui-card">
+								<!--页眉，放置标题-->
+								<div class="mui-media-body text-center">叠加红包</div>
+								<!--内容区-->
+								<div class="mui-card-content">
+									<img src="img/yh%20(3).webp">
+								</div>
+								<!--页脚，放置补充信息或支持的操作-->
+								<div class="mui-media-body text-center">周五折上折
+									<span>限时疯抢</span>
+								</div>
+							</div>
+						</div>
+						<div class="mui-col-xs-6">
+							<div class="mui-card">
+								<!--页眉，放置标题-->
+								<div class="mui-media-body text-center">端午快乐</div>
+								<!--内容区-->
+								<div class="mui-card-content">
+									<img src="img/yh_(4).webp">
+								</div>
+								<!--页脚，放置补充信息或支持的操作-->
+								<div class="mui-media-body text-center">端午佳节
+									<span>赠个不停</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		<footer>
+
+		</footer>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/my_tmpl.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			/* 跳转到商品详情页 */
+			// 加载事件
+			mui.plusReady(function() {
+				// 给订单注册轻击事件打开 订单详情界面事件
+				mui(".wm-tj-l").on("tap", "img", function(e) {
+					//  获取 商品名称
+					var title = this.getAttribute("title");
+					// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+					mui.openWindow({
+						url: "discover/detail.html",
+						id: "discover/detail.html",
+						/* styles: {   // 默认样式即可 占满屏幕
+							top: newpage - top - position, //新页面顶部位置
+							bottom: newage - bottom - position, //新页面底部位置
+							width: newpage - width, //新页面宽度，默认为100%
+							height: newpage - height, //新页面高度，默认为100%
+							......
+						}, */
+						extras: {
+							// ..... //自定义扩展参数，可以用来处理页面间传值
+							// 我们需要传递的是 商品名称
+							name: title
+						},
+						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 100 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+							/* options: {
+								width: waiting - dialog - widht, //等待框背景区域宽度，默认根据内容自动计算合适宽度
+								height: waiting - dialog - height, //等待框背景区域高度，默认根据内容自动计算合适高度
+								......
+							} */
+						}
+					});
+				});
+			});
+			
+			/* 跳转到餐品详情页 */
+			// 加载事件
+			mui.plusReady(function() {
+				// 给订单注册轻击事件打开 订单详情界面事件
+				mui(".mui-col-xs-2").on("tap", "img", function(e) {
+					//  获取 商品名称
+					var title = this.getAttribute("title");
+					// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+					mui.openWindow({
+						url: "takeOut/takeout_meishi.html",
+						id: "takeOuttakeout_meishi.html",
+						/* styles: {   // 默认样式即可 占满屏幕
+							top: newpage - top - position, //新页面顶部位置
+							bottom: newage - bottom - position, //新页面底部位置
+							width: newpage - width, //新页面宽度，默认为100%
+							height: newpage - height, //新页面高度，默认为100%
+							......
+						}, */
+						extras: {
+							// ..... //自定义扩展参数，可以用来处理页面间传值
+							// 我们需要传递的是 商品名称
+							name: title
+						},
+						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 100 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+							/* options: {
+								width: waiting - dialog - widht, //等待框背景区域宽度，默认根据内容自动计算合适宽度
+								height: waiting - dialog - height, //等待框背景区域高度，默认根据内容自动计算合适高度
+								......
+							} */
+						}
+					});
+				});
+			});
+			
+			
+			/* 跳转到定位页面 */
+			// 加载事件
+			mui.plusReady(function() {
+				// 给订单注册轻击事件打开 订单详情界面事件
+				mui(".mui-bar-nav").on("tap", "h1", function(e) {
+					//  获取 商品名称
+					var title = this.getAttribute("title");
+					// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+					mui.openWindow({
+						url: "address/address.html",
+						id: "address/address.html",
+						/* styles: {   // 默认样式即可 占满屏幕
+							top: newpage - top - position, //新页面顶部位置
+							bottom: newage - bottom - position, //新页面底部位置
+							width: newpage - width, //新页面宽度，默认为100%
+							height: newpage - height, //新页面高度，默认为100%
+							......
+						}, */
+						extras: {
+							// ..... //自定义扩展参数，可以用来处理页面间传值
+							// 我们需要传递的是 商品名称
+							name: title
+						},
+						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 100 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+							/* options: {
+								width: waiting - dialog - widht, //等待框背景区域宽度，默认根据内容自动计算合适宽度
+								height: waiting - dialog - height, //等待框背景区域高度，默认根据内容自动计算合适高度
+								......
+							} */
+						}
+					});
+				});
+			});
+			//获得slider插件对象
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+				interval: 2000 //自动轮播周期，若为0则不自动播放，默认为0；
+			});
+		</script>
+	</body>
+</html>

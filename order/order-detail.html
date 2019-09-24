@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<style>
+				* {
+				font-family: 苹方;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单详情</h1>
+			<a class="mui-action-back mui-icon mui-icon mui-icon-phone mui-pull-right"></a><!-- 客户专线图标 -->
+		</header>
+		<div class="mui-content">
+			<div class="order-detail-div">
+				<div class="order-ok-list-t-r order-detail-s" style="width:100%;">
+					<div class="order-ok-list-t-r-t">
+						<h5 id="title">全鸡大餐<span class="mui-icon mui-icon-arrowright"></span></h5>
+					</div>
+					<div class="order-ok-list-t-r-b">
+						<p><span>鸡块</span><span class="mui-pull-right">x1</span></p>
+						<p><span>鸡腿</span><span class="mui-pull-right">x3</span></p>
+						<p><span>鸡排</span><span class="mui-pull-right">x1</span></p>
+						<p style="margin-top:30px;">
+							<button class="line-btn">再来一单</button>
+							<span class="mui-pull-right">共<span>5</span>份，实付<span class="bold-txt">¥64.5</span></span></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="wm-sj-tt">
+				<div class="public-list-txt">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a class="">
+								<span style="font-weight:bold;">订单详情<span class="mui-pull-right small-txt" style="font-weight: normal;">订单号：<span>12001220222</span></span></span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="">
+								<span>联系人：<span>马尔扎哈</span></span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="">
+								<span>联系电话：<span>170000000</span></span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="">
+								<span>地址：<span>重庆大学城市科技学院6-666</span></span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="">
+								<span>下单时间：<span>2019-6-16</span></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="shop-car" style="background: #fff;">
+				<div class="shop-car-r">
+					<button class="public-b-btn">取消订单</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				// 给订单注册轻击事件打开 订单详情界面事件
+				mui(".mui-bar-nav").on("tap", "a", function() {
+					//  获取 商品名称
+					// var title = this.getAttribute("title");
+					// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+					//打开新窗口
+					mui.openWindow({
+						url: 'im-chat.html', //需要打开页面的url地址 
+						id: 'im-chat.html', //需要打开页面的url页面id
+						show: { //控制打开页面的类型
+							autoShow: true,
+							//					//页面loaded事件发生后自动显示，默认为true 
+							aniShow: 'slide-in-right', //页面显示动画，默认为”slide-in-right“；  页面出现的方式 左右上下
+							duration: '100' //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒； 
+						},
+						waiting: { // 控制 弹出转圈框的信息
+							autoShow: true, //自动显示等待框，默认为true 
+							title: '正在加载', //等待对话框上显示的提示内容 
+						}
+					});
+				});
+			});
+		</script>
+		<script src="../js/mui.js"></script>
+	</body>
+
+</html>

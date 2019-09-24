@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">选择地址</h1>
+	   <span id="add-address"> <a class="mui-icon mui-icon-close mui-pull-right mui-icon-plusempty"></a></span>
+	</header>
+	<div class="mui-content">
+		<div class="location-div">
+			<div class="location-div-o">
+				<p class="blue-txt">已经定位的城市</p>
+				<button class="public-b-btn">重庆市</button>
+			</div>
+			<div class="location-div-o  location-div-t public-clear-both">
+				<p class="blue-txt">热门城市</p>
+				<button class="">北京市</button>
+				<button class="">上海市</button>
+				<button class="public-margin-right-none">广州市</button>
+				<button class="">深圳市</button>
+				<button class="">郑州市</button>
+				<button class="public-margin-right-none">杭州市</button>
+				<button class="">苏州市</button>
+				<button class="">天津市</button>
+				<button class="public-margin-right-none">重庆市</button>
+			</div>
+			<div class="location-div-t">
+				<div class="location-div-t-nav">
+					<p>A</p>
+					<p>B</p>
+					<p>C</p>
+					<p>D</p>
+					<p>E</p>
+					<p>F</p>
+					<p>G</p>
+					<p>H</p>
+					<p>I</p>
+					<p>J</p>
+					<p>K</p>
+					<p>L</p>
+					<p>M</p>
+					<p>N</p>
+					<p>O</p>
+					<p>P</p>
+					<p>Q</p>
+					<p>R</p>
+					<p>S</p>
+					<p>T</p>
+					<p>U</p>
+					<p>V</p>
+					<p>W</p>
+					<p>X</p>
+					<p>Y</p>
+					<p>Z</p>
+				</div>
+				<div class="location-div-t-list">
+					<div class="location-div-t-list-d">
+		    			<p>A</p>
+		    			<ul class="mui-table-view">
+		    				<li class="mui-table-view-cell">阿坝县</li>
+		    				<li class="mui-table-view-cell">阿尔山市</li>
+		    				<li class="mui-table-view-cell">阿克苏市</li>
+		    				<li class="mui-table-view-cell">阿拉尔市</li>
+		    			</ul>
+					</div>
+					<div class="location-div-t-list-d">
+		    			<p>B</p>
+		    			<ul class="mui-table-view">
+		    				<li class="mui-table-view-cell">巴楚县</li>
+		    				<li class="mui-table-view-cell">巴东县</li>
+		    				<li class="mui-table-view-cell">白城市</li>
+		    				<li class="mui-table-view-cell">白河县</li>
+		    			</ul>
+					</div>
+					<div class="location-div-t-list-d">
+		    			<p>C</p>
+		    			<ul class="mui-table-view">
+		    				<li class="mui-table-view-cell">常德市</li>
+		    				<li class="mui-table-view-cell">长丰市</li>
+		    				<li class="mui-table-view-cell">澄海县</li>
+		    				<li class="mui-table-view-cell">昌吉市</li>
+		    			</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="../js/castapp.js"></script>
+	<script>
+		ca.init();
+		
+		var list_div = ca.id('list_div');
+		
+		var btn = ca.id('add-address');
+		btn.addEventListener('tap',function(){
+			//跳转到添加地址界面
+			ca.newInterface({
+				url:'add-address.html',
+				id:'add_address'
+			})
+			
+		});
+		
+		var request_url = localStorage.getItem('request_url');
+		var login_phone = localStorage.getItem('login_phone');
+		
+		//接收通知
+		ca.receiveNotice('update',function(){
+			get_address();
+		});
+		
+		
+		
+		get_address();
+		function get_address(){
+			list_div.innerHTML = '';
+//			var
+			//请求数据库获得我们的地址
+			ca.get({
+				url:request_url+'User/get_address',
+				data:{
+					phone_data:login_phone,
+				},succFn:function(data){
+//					alert(data);
+					var json = JSON.parse(data);
+					for(var a in json){
+						
+						if(json[a].sex == '男'){
+							var dd = '先生';
+						}else{
+							var dd = '女士';
+						}
+						
+						
+						var tmpl = '<li class="mui-table-view-cell" id_data="'+json[a].id+'">'
+					    	        +'    <a class="mui-navigate-right addres-list">'
+					    	        +'        <h5><span>'+json[a].name+'</span><span>'+dd+'</span><span>'+json[a].phone+'</span></h5>'
+					    	        +'        <p>'+json[a].address+'</p>'
+					    	        +'    </a>'
+					    	       +' </li>';
+					   	list_div.innerHTML += tmpl;
+					}
+					
+					click_event();
+
+
+				}
+			})
+
+		};
+		
+		
+		function click_event(){
+			var cell = ca.className('mui-table-view-cell');
+			for(var a=0;a<cell.length;a++){
+				(function(index){
+					ca.gesture(cell[a],'doubletap',function(){
+				
+					    var id = cell[index].getAttribute('id_data');
+					    var this1 = cell[index];
+					   	
+					   	ca.get({
+					   		url:request_url+'User/del_address',
+					   		data:{
+					   			id_data:id
+					   		},succFn:function(data){
+					   			
+					   			if(data == 1){
+					   				ca.prompt('已删除');
+					   				
+					   				var parend = this1.parentNode;
+					   				parend.removeChild(this1);
+					   				
+					   			}else{
+					   				ca.prompt('删除失败');
+					   			}
+					   			
+					   			
+					   		}
+					   	})
+					});
+				})(a);
+			}
+		}
+		
+	</script>
+</body>
+</html>

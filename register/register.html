@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/style.css" />
+	<style type="text/css">
+		body,
+		div,.mui-content,.mui-input-group {
+			background-color: #FFFFFF;
+		}
+		
+		.public-margin-top img {
+			width: 30%;
+			height: 30%;
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">注册</h1>
+	</header>
+	<div class="mui-content">
+		<div class="public-margin-top">
+			<img src="../img/login/logo.png">
+		    <form class="mui-input-group" action="javascript:;" style="margin-top: 90px;">
+		        <div class="mui-input-row register-input">
+		            <input type="text" class="mui-input" placeholder="手机号">
+		            <button class="yzm-btn">获取验证码</button>
+		        </div>
+		        <div class="mui-input-row">
+		            <input type="text" class="mui-input-clear" placeholder="验证码">
+		        </div>
+		        <div class="mui-input-row">
+		         	<input type="password" class="mui-input-password" placeholder="密码">
+		        </div>
+		    </form>
+		    <button class="public-g-btn btn-block">注&nbsp;册</button>
+		</div>
+	</div>
+	<script src="../js/castapp.js"></script>
+	<script>
+		ca.init('','H5BE68F9B');
+		
+		//获得所有的input 
+		var input = ca.tagName('input');
+		var button = ca.tagName('button');
+		
+		var code_data = '';
+		
+		//开关
+		var onoff = true;
+		//获取验证码
+		button['0'].addEventListener('tap',function(){
+			
+			if(!onoff){
+				return;
+			}
+			onoff = false;
+			
+			
+			//获得手机号码
+			var phone = input['0'].value;
+			if(phone == ''){
+				ca.prompt('请输入手机号码');
+				onoff = true;
+				return;
+			}
+			if(phone.length != 11){
+				ca.prompt('手机号码位数不正取');
+				onoff = true;
+				return;
+			}
+			//判断....
+			
+			//发短信 每次验证码都不一样，生成
+			
+			code_data = ca.getIdCode(4);
+			
+			castapp.sendIdCode({
+			    code:code_data,
+			    target_phone:phone,
+			    appid:'2016010720042564848',
+			    appkey:'ed4qj6la1xv5wskh0b8m',
+			    sms_templates:'sms_tmpl_2',
+			    callback:function(state){
+			        if(state == true){
+		                castapp.prompt('发送成功');
+		                var num = 30;
+		                var timer = setInterval(function(){
+		                	
+		                	num --;
+							if(num < 1){
+								button['0'].innerHTML = '获取验证码';
+								clearInterval(timer);
+								onoff = true;
+								code_data = 'sadasdasdas';
+							}else{
+								button['0'].innerHTML = num +'S';				
+							}
+		         
+		                	
+		                },1000);      
+		                
+		            }else{
+		                castapp.prompt('发送失败');
+		                onoff = true;
+		            }
+			    }
+			});
+				
+		});
+		
+		//注册
+		button['1'].addEventListener('tap',function(){
+			var phone = input['0'].value;
+			var input_code = input['1'].value;
+			var password = input['2'].value;
+			
+			if(phone == ''){
+				ca.prompt('手机号码不能为空');
+				return;
+			}
+			if(input_code == ''){
+				ca.prompt('请输入验证码');
+				return;
+			}
+			
+			if(code_data != input_code){
+				ca.prompt('验证码输入不正取');
+				return;
+			}
+			
+			if(password == ''){
+				ca.prompt('请输入密码');
+				return;
+			}
+			var request_url = localStorage.getItem('request_url');
+			//请求数据库注册用户
+			ca.get({
+				url:request_url+'Login/register_do',
+				data:{
+					phone_data:phone,
+					password_data:password
+				},
+				succFn:function(data){
+					
+					if(data > 0){
+						ca.prompt('注册成功');
+							
+						
+						/***
+						 * 我们需要存入手机号码作为依据
+						 */
+						localStorage.setItem('login_phone',phone);
+						
+						var arr = ['home'];
+						ca.sendNotice(arr,'update',{});
+						
+						ca.getStartInterface(function(obj){
+							obj.show();
+						});
+						
+						
+						
+							
+					}else if(data == -2){
+						ca.prompt('手机号码已经存在');
+					}else{
+						ca.prompt('注册失败,请重试');
+					}	
+				}
+			});
+			
+			
+			
+		});
+	</script>
+</body>
+</html>

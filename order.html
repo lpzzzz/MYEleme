@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>订单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link href="css/main.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			#font-s {
+				font-size: 12px;
+			}
+
+			#order-sd {
+				font-size: 8px;
+				float: right;
+			}
+
+			#oreder-count {
+				font-size: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">历史订单</h1>
+		</header>
+		<div class="mui-content">
+			<ul id="OA_task_1" class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+						<a href="javascript:;" title="叫花鸡">
+							<!-- 设置一个 title方便后面获取 商品名称-->
+							<img class="mui-media-object mui-pull-left" src="img/1%20-%2090x90.jpg">
+							<div class="mui-media-body">
+								<span id="font-s">
+									全鸡大餐(光彩大道368号叫只鸡) <span id="order-sd">订单已送达</span>
+								</span>
+								<p id="oreder-count">2019-06-18 11:23</p>
+								<p class="mui-ellipsis" id="oreder-count">鸡腿、鸡块、鸡排等5件商品</p>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+						<a href="javascript:;" title="大橘为重">
+							<!-- 设置一个 title方便后面获取 商品名称-->
+							<img class="mui-media-object mui-pull-left" src="img/4%20-%2090x90.jpg">
+							<div class="mui-media-body">
+								<span id="font-s">
+									大橘为重  <span id="order-sd">订单已送达</span>
+								</span>
+								<p id="oreder-count">2019-06-17 11:23</p>
+								<p class="mui-ellipsis" id="oreder-count">金桔、大橘等5件商品</p>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+						<a href="javascript:;" title="健康诊所">
+							<!-- 设置一个 title方便后面获取 商品名称-->
+							<img class="mui-media-object mui-pull-left" src="img/5%20-%2090x90.jpg">
+							<div class="mui-media-body">
+								<span id="font-s">
+									健康诊所  <span id="order-sd">订单已送达</span>
+								</span>
+								<p id="oreder-count">2019-06-16 11:23</p>
+								<p class="mui-ellipsis" id="oreder-count">葡萄糖、999感冒灵、阿莫西林等3件商品</p>
+							</div>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init();
+			(function($) {
+				//$.swipeoutOpen(el,direction)//打开指定列的滑动菜单，el:指定列的dom对象，direction：取值left|right，指定打开的是左侧或右侧滑动菜单
+				//$.swipeoutClose(el);//关闭指定列的滑动菜单，el:指定列的dom对象
+				//				setTimeout(function() {
+				//					$.swipeoutOpen(document.getElementById("OA_task_1").querySelector('li:last-child'), 'left');
+				//					setTimeout(function() {
+				//						$.swipeoutClose(document.getElementById("OA_task_1").querySelector('li:last-child'));
+				//					}, 1000);
+				//				}, 1000);
+				//第一个demo，拖拽后显示操作图标，点击操作图标删除元素；
+				$('#OA_task_1').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+						if (e.index == 0) {
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				var btnArray = ['确认', '取消'];
+				//第二个demo，向左拖拽后显示操作图标，释放后自动触发的业务逻辑
+				$('#OA_task_2').on('slideleft', '.mui-table-view-cell', function(event) {
+					var elem = this;
+					mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+						if (e.index == 0) {
+							elem.parentNode.removeChild(elem);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(elem);
+							}, 0);
+						}
+					});
+				});
+				//第二个demo，向右拖拽后显示操作图标，释放后自动触发的业务逻辑
+				$('#OA_task_2').on('slideright', '.mui-table-view-cell', function(event) {
+					var elem = this;
+					mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+						if (e.index == 0) {
+							elem.parentNode.removeChild(elem);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(elem);
+							}, 0);
+						}
+					});
+				});
+			})(mui);
+
+			// 加载事件
+			mui.plusReady(function() {
+				// 给订单注册轻击事件打开 订单详情界面事件
+				mui(".mui-table-view-cell").on("tap", "a", function() {
+					//  获取 商品名称
+					var title = this.getAttribute("title");
+					// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+					mui.openWindow({
+						url: "order/order-detail.html",
+						id: "order/order-detail.html",
+						
+						extras: {
+							// ..... //自定义扩展参数，可以用来处理页面间传值
+							// 我们需要传递的是 商品名称
+							name: title
+						},
+						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+							duration: 100 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

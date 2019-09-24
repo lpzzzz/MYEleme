@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			* {
+				font-family: 苹方;
+			}
+
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+
+			.mui-row.mui-fullscreen>[class*="mui-col-"] {
+				height: 100%;
+			}
+
+			.mui-col-xs-3,
+			.mui-control-content {
+				overflow-y: auto;
+				height: 100%;
+			}
+
+			.mui-segmented-control .mui-control-item {
+				line-height: 50px;
+				width: 100%;
+			}
+
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				background-color: #fff;
+			}
+
+			html,
+			body {
+				background-color: #efeff4;
+			}
+
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+
+				margin: 0;
+			}
+
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+
+			h5 {
+				padding-top: 8px;
+				padding-bottom: 8px;
+				text-indent: 12px;
+			}
+
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 15px;
+				margin-top: 8px;
+				color: #333;
+			}
+			
+			.mui-table-view-cell a div {
+				font-weight: bold;
+			}
+			
+			.mui-table-view-cell a p {
+				color: #888888;
+				font-size: 12px;
+				border-bottom: 1px #EEEEEE dashed;
+			}
+			#margin-price {
+				margin-left: 50px;
+				color: #888888;
+				font-size: 10px;
+			}
+			#ys-c {
+				color: #888888;
+				font-size: 10px;
+			}
+			#border-btn {
+				font-size: 10px;
+				margin-left: 50px;
+				padding: 0px; /* 设置这个就好*/
+			}
+			#border-btn-no {
+				font-size: 10px;
+				padding: 0px; /* 设置这个就好*/
+			}
+			#disc-time{
+				float: right;
+				color: #888888;
+				font-size: 10px;
+			}
+			#border-btn-no-float {
+				font-size: 10px;
+				padding: 0px; /* 设置这个就好*/
+				float: right;
+			}
+		</style>
+		<link rel="stylesheet" href="../css/style.css" />
+	</head>
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">商品详情</h1>
+		</header>
+		
+		<div class="mui-content mui-row mui-fullscreen">
+			<div class="mui-col-xs-3">
+				<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical cotrl-scoll">
+					<a class="mui-control-item mui-active" href="#item1mobile">
+						为你推荐
+					</a>
+					<a class="mui-control-item" href="#item2mobile">
+						中餐
+					</a>
+					<a class="mui-control-item" href="#item3mobile">
+						特色小吃
+					</a>
+					<a class="mui-control-item" href="#item4mobile">
+						西餐
+					</a>
+					<a class="mui-control-item" href="#item5mobile">
+						限时折扣
+					</a>
+					<a class="mui-control-item" href="#item6mobile">
+						热门美食
+					</a>
+				</div>
+			</div>
+
+		
+			<div>
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll1" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<h5 style="background-color:#efeff4">你的口味 -- 我都懂</h5>
+									<ul class="mui-table-view mui-grid-view">
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#">
+												<img class="mui-media-object" src="img/disc%20(1).webp">
+												<div class="mui-media-body">手扒鸡 - 薯条 - 奶茶</div>
+												<p>10000人好评</p>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+												<p>￥22.4</p>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#">
+												<img class="mui-media-object" src="img/disc%20(2).webp">
+												<div class="mui-media-body">实惠双人餐</div>
+												<p>88888人好评</p>
+												<button type="button" class="mui-btn-success" id="border-btn-no-float">新</button>
+												<p>￥22.4</p>
+											</a></li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#"><img class="mui-media-object" src="img/disc%20(3).webp">
+												<div class="mui-media-body">其乐融融</div>
+												<p>88888人好评</p>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+												<p>￥22.4</p>
+											</a></li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#">
+												<img class="mui-media-object" src="img/disc%20(4).webp">
+												<div class="mui-media-body">牛肉拉面</div>
+												<p>88888人好评</p>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+												<p>￥22.4</p>
+											</a></li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#">
+												<img class="mui-media-object" src="img/disc%20(5).webp">
+												<div class="mui-media-body">香肠拉面</div>
+												<p>88888人好评</p>
+												<p>￥22.4</p>
+											</a></li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#">
+												<img class="mui-media-object" src="img/disc%20(6).webp">
+												<div class="mui-media-body">香菜聚顶</div>
+												<p>88888人好评</p>
+												<button type="button" class="mui-btn-success" id="border-btn-no-float">新</button>
+												<p>￥22.4</p>
+											</a></li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#"><img class="mui-media-object" src="img/disc%20(7).webp">
+												<div class="mui-media-body">香辣鸡腿堡</div>
+												<p>88888人好评</p>
+												<p>￥22.4</p>
+											</a></li>
+										<li class="mui-table-view-cell mui-media mui-col-xs-6">
+											<a href="#">
+												<img class="mui-media-object" src="img/disc%20(8).webp">
+												<div class="mui-media-body">丸丸</div>
+												<p>88888人好评</p>
+												<p>￥22.4</p>
+											</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item2mobile" class="mui-slider-item mui-control-content">
+							<div class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell mui-media" id="border-li">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (1).webp">
+												<div class="mui-media-body">
+													麻辣香锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (2).webp">
+												<div class="mui-media-body">
+													爱尚冒菜
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+												<button type="button" class="mui-btn-success" id="border-btn-no-float">新</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (3).webp">
+												<div class="mui-media-body">
+													享多味汉堡炸鸡
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (4).webp">
+												<div class="mui-media-body">
+													重庆鸡公煲
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (5).webp">
+												<div class="mui-media-body">
+													黄金脆皮鸡饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (6).webp">
+												<div class="mui-media-body">
+													贵阳香辣鸡煲
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+												<button type="button" class="mui-btn-primary" id="border-btn-no-float">折</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (7).webp">
+												<div class="mui-media-body">
+													美味排骨
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+												<button type="button" class="mui-btn-primary" id="border-btn-no-float">折</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (8).webp">
+												<div class="mui-media-body">
+													黄焖鸡米饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (9).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-zc/dis-zc (5).webp">
+												<div class="mui-media-body">
+													德州汉堡
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+				
+						<!-- 特色小吃开始 -->
+						<div id="item3mobile" class="mui-slider-item mui-control-content">
+							<div class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell mui-media" id="border-li">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (1).webp">
+												<div class="mui-media-body">
+													泡椒猪肝
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8888单</p>
+												<p class="mui-ellipsis" id="margin-price">￥16起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">2.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">雪花啤酒</button>
+												<button type="button" id="border-btn-no">江小白</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (2).webp">
+												<div class="mui-media-body">
+													胡萝卜炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8848单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">可乐</button>
+												<button type="button" id="border-btn-no">蛋花汤</button>
+												<button type="button" class="mui-btn-success" id="border-btn-no-float">新</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (3).webp">
+												<div class="mui-media-body">
+													馨语蛋糕
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色糕点</button>
+												<button type="button" id="border-btn-no">美味奶油</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (4).webp">
+												<div class="mui-media-body">
+													黄金脆皮鸡
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售566单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">鸡翅</button>
+												<button type="button" id="border-btn-no">鸡腿</button>
+												<button type="button" class="mui-btn-danger" id="border-btn-no-float">荐</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (5).webp">
+												<div class="mui-media-body">
+													黄焖鸡米饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色大米</button>
+												<button type="button" id="border-btn-no">特质高压锅</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (6).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">支持自取</button>
+												<button type="button" id="border-btn-no">品质联盟</button>
+												<button type="button" class="mui-btn-success" id="border-btn-no-float">新</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (11).webp">
+												<div class="mui-media-body">
+													幸运餐馆
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (8).webp">
+												<div class="mui-media-body">
+													美滋味
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (9).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (10).webp">
+												<div class="mui-media-body">
+													学姐炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炒饭</button>
+												<button type="button" id="border-btn-no">爆炒鸡丁</button>
+												<button type="button" class="mui-btn-primary" id="border-btn-no-float">折</button>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item4mobile" class="mui-slider-item mui-control-content">
+							<div class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell mui-media" id="border-li">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (1).webp">
+												<div class="mui-media-body">
+													泡椒猪肝
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8888单</p>
+												<p class="mui-ellipsis" id="margin-price">￥16起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">2.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">雪花啤酒</button>
+												<button type="button" id="border-btn-no">江小白</button>
+												<button type="button" class="mui-btn-primary" id="border-btn-no-float">折</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (2).webp">
+												<div class="mui-media-body">
+													胡萝卜炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8848单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">可乐</button>
+												<button type="button" id="border-btn-no">蛋花汤</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (3).webp">
+												<div class="mui-media-body">
+													馨语蛋糕
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色糕点</button>
+												<button type="button" id="border-btn-no">美味奶油</button>
+												<button type="button" class="mui-btn-primary" id="border-btn-no-float">折</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (4).webp">
+												<div class="mui-media-body">
+													黄金脆皮鸡
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售566单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">鸡翅</button>
+												<button type="button" id="border-btn-no">鸡腿</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (5).webp">
+												<div class="mui-media-body">
+													黄焖鸡米饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色大米</button>
+												<button type="button" id="border-btn-no">特质高压锅</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (6).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">支持自取</button>
+												<button type="button" id="border-btn-no">品质联盟</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (11).webp">
+												<div class="mui-media-body">
+													幸运餐馆
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (8).webp">
+												<div class="mui-media-body">
+													美滋味
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (9).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (10).webp">
+												<div class="mui-media-body">
+													学姐炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炒饭</button>
+												<button type="button" id="border-btn-no">爆炒鸡丁</button>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item5mobile" class="mui-slider-item mui-control-content">
+							<div class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell mui-media" id="border-li">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (1).webp">
+												<div class="mui-media-body">
+													泡椒猪肝
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8888单</p>
+												<p class="mui-ellipsis" id="margin-price">￥16起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">2.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">雪花啤酒</button>
+												<button type="button" id="border-btn-no">江小白</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (2).webp">
+												<div class="mui-media-body">
+													胡萝卜炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8848单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">可乐</button>
+												<button type="button" id="border-btn-no">蛋花汤</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (3).webp">
+												<div class="mui-media-body">
+													馨语蛋糕
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色糕点</button>
+												<button type="button" id="border-btn-no">美味奶油</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (4).webp">
+												<div class="mui-media-body">
+													黄金脆皮鸡
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售566单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">鸡翅</button>
+												<button type="button" id="border-btn-no">鸡腿</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (5).webp">
+												<div class="mui-media-body">
+													黄焖鸡米饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色大米</button>
+												<button type="button" id="border-btn-no">特质高压锅</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (6).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">支持自取</button>
+												<button type="button" id="border-btn-no">品质联盟</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (11).webp">
+												<div class="mui-media-body">
+													幸运餐馆
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (8).webp">
+												<div class="mui-media-body">
+													美滋味
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (9).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (10).webp">
+												<div class="mui-media-body">
+													学姐炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炒饭</button>
+												<button type="button" id="border-btn-no">爆炒鸡丁</button>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item6mobile" class="mui-slider-item mui-control-content">
+							<div class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell mui-media" id="border-li">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (1).webp">
+												<div class="mui-media-body">
+													泡椒猪肝
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8888单</p>
+												<p class="mui-ellipsis" id="margin-price">￥16起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">2.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">雪花啤酒</button>
+												<button type="button" id="border-btn-no">江小白</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (2).webp">
+												<div class="mui-media-body">
+													胡萝卜炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售8848单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">可乐</button>
+												<button type="button" id="border-btn-no">蛋花汤</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (3).webp">
+												<div class="mui-media-body">
+													馨语蛋糕
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色糕点</button>
+												<button type="button" id="border-btn-no">美味奶油</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (4).webp">
+												<div class="mui-media-body">
+													黄金脆皮鸡
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售566单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">鸡翅</button>
+												<button type="button" id="border-btn-no">鸡腿</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (5).webp">
+												<div class="mui-media-body">
+													黄焖鸡米饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">特色大米</button>
+												<button type="button" id="border-btn-no">特质高压锅</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (6).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">支持自取</button>
+												<button type="button" id="border-btn-no">品质联盟</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (11).webp">
+												<div class="mui-media-body">
+													幸运餐馆
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (8).webp">
+												<div class="mui-media-body">
+													美滋味
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">盖浇饭</button>
+												<button type="button" id="border-btn-no">支持自取</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (9).webp">
+												<div class="mui-media-body">
+													王者石锅
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炸鸡炸串</button>
+												<button type="button" id="border-btn-no">爆香鸡肉卷</button>
+											</a>
+										</li>
+										<li class="mui-table-view-cell mui-media">
+											<a href="javascript:;">
+												<img class="mui-media-object mui-pull-left" src="img/disc-ts/disc-ts (10).webp">
+												<div class="mui-media-body">
+													学姐炒饭
+													<p class="mui-ellipsis"></p>
+												</div>
+												<p class="mui-ellipsis" id="ys-c">月售666单</p>
+												<p class="mui-ellipsis" id="margin-price">￥15起送&nbsp;&nbsp;|&nbsp;&nbsp;配送费￥1</p>
+												<span id="disc-time">1.19km&nbsp;&nbsp;|&nbsp;&nbsp;34分钟</span>
+												<button type="button" id="border-btn">炒饭</button>
+												<button type="button" id="border-btn-no">爆炒鸡丁</button>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+
+		<div class="shop-car" style="position:fixed;z-index:10;bottom: 0px;">
+			<div class="shop-car-l">
+				<span class="mui-icon mui-icon-paperplane fj-icon"></span>
+				<span>¥<span class="info">0</span></span>
+			</div>
+			<div class="shop-car-r">
+				<span>¥<span class="info">38</span>起送</span>
+				<button id="btn">去付款</button>
+			</div>
+		</div>
+		</div>
+		<script src="../js/castapp.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios ? 0.003 : 0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: deceleration
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.cotrl-scoll .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
+										self.endPullDownToRefresh();
+									}, 1000);
+								}
+							},
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.appendChild(createFragment(ul, index, 5));
+										self.endPullUpToRefresh();
+									}, 1000);
+								}
+							}
+						});
+					});
+					var createFragment = function(ul, index, count, reverse) {
+						var length = ul.querySelectorAll('li').length;
+						var fragment = document.createDocumentFragment();
+						var li;
+						for (var i = 0; i < count; i++) {
+							li = document.createElement('li');
+							li.className = 'mui-table-view-cell';
+							li.innerHTML = '第' + (index + 1) + '个选项卡子项-' + (length + (reverse ? (count - i) : (i + 1)));
+							fragment.appendChild(li);
+						}
+						return fragment;
+					};
+				});
+			})(mui);
+
+			ca.init('', 'H5BE68F9B');
+
+			var item_id = localStorage.getItem('item_id');
+			var info = ca.className('info');
+			var comment_list = ca.id('comment_list');
+
+			var request_url = localStorage.getItem('request_url');
+
+			//我们有的时候请求数据库写在函数内，又得时候写在函数外
+
+			get_item();
+
+			function get_item() {
+
+				ca.get({
+					url: request_url + 'Item/get_one',
+					data: {
+						id_data: item_id
+					},
+					succFn: function(data) {
+
+						var json = JSON.parse(data);
+						//获得平均分
+						var pj_num = json.pj_num;
+
+						var span = info['0'].getElementsByTagName('span');
+
+						for (var a = 0; a < span.length; a++) {
+							if (a < pj_num) {
+								span[a].className = "mui-icon mui-icon-star-filled star-ys star-sctive";
+							} else {
+								span[a].className = "mui-icon mui-icon-star-filled star-ys";
+							}
+						}
+
+
+						info['1'].innerHTML = json.comment_number;
+
+						info['2'].innerHTML = json.buy_number;
+						info['3'].innerHTML = info['6'].innerHTML = json.price;
+
+
+						//获得所有评价
+						var comment_arr = json.comment_arr;
+						for (var s in comment_arr) {
+
+							var user_data = comment_arr[s].user_data;
+							var img_url = localStorage.getItem('img_url');
+							if (user_data.head_img) {
+								var h = img_url + user_data.head_img;
+							} else {
+								var h = 'images/head.jpg';
+							}
+
+							//循环分
+							var num1 = comment_arr[s].num1;
+							var tmpl1 = '';
+							for (var f = 0; f < 5; f++) {
+								if (num1 > f) {
+									tmpl1 += '<span class="mui-icon mui-icon-star-filled star-ys star-sctive"></span>';
+								} else {
+									tmpl1 += '<span class="mui-icon mui-icon-star-filled star-ys"></span>';
+								}
+							}
+
+
+
+							var tmpl = '<div class="pl-list-div public-clear-both">' +
+								'	<div class="pl-list-div-l">' +
+								'		<img src="' + h + '" alt="" />' +
+								'	</div>' +
+								'	<div class="pl-list-div-r">' +
+								'		<p><span>' + user_data.nickname + '</span><span class="mui-pull-right">' + comment_arr[s].time +
+								'</span></p>' +
+								'		<div class="wm-list-div-r-t">' +
+								'			<div class="wm-list-div-r-t-l">' +
+								tmpl1
+								//									+'				<span class="mui-icon mui-icon-star-filled star-ys star-sctive"></span>'
+								//									+'				<span class="mui-icon mui-icon-star-filled star-ys star-sctive"></span>'
+								//									+'				<span class="mui-icon mui-icon-star-filled star-ys star-sctive"></span>'
+								//									+'				<span class="mui-icon mui-icon-star-filled star-ys star-sctive"></span>'
+								//									+'				<span class="mui-icon mui-icon-star-filled star-ys"></span>'
+								+
+								'			</div>' +
+								'			<span class="small-txt" style="margin-left:10px;color:#999;"></span>' +
+								'		</div>' +
+								'		<p class="pj-c">' + comment_arr[s].content + '</p>' +
+								'	</div>' +
+								'</div>'
+							comment_list.innerHTML += tmpl;
+						}
+
+
+					}
+				})
+
+
+			}
+
+			//加入购物车
+			info['4'].addEventListener('tap', function() {
+				info['5'].innerHTML = parseFloat(info['5'].innerHTML) + parseFloat(info['6'].innerHTML);
+			})
+
+			var btn = ca.id('btn');
+
+
+
+			btn.addEventListener('tap', function() {
+
+				//先判断是否登录
+				var login_phone = localStorage.getItem('login_phone');
+				if (!login_phone) {
+					ca.prompt('请登录');
+					ca.newInterface({
+						url: '../login/login.html',
+						id: '../login/login.html'
+					});
+					return;
+				}
+
+
+				var money = info['5'].innerHTML;
+				if (parseFloat(money) < 0.000001) {
+					ca.prompt('请选购后付款');
+					return;
+				}
+
+				//订单流程 -> 产生一个订单(未付款)->跳转到支付界面->支付成功->吧订单状态改成已付款
+				//						   ->扣除余额
+				//产生一个订单
+				ca.get({
+					url: request_url + 'Item/create_order',
+					data: {
+						phone_data: login_phone,
+						item_data: item_id,
+						money_data: money
+					},
+					succFn: function(data) {
+						//					alert(data);
+						if (data > 0) {
+							//判断是否有余额够支付
+							var user_json = JSON.parse(localStorage.getItem('user_data'));
+							if (parseFloat(user_json.money) >= parseFloat(money)) {
+
+								//询问一下，是否使用账户支付
+								var btnArray = ['是', '否'];
+								mui.confirm('是否使用余额支付？', '支付提醒', btnArray, function(e) {
+									if (e.index == 0) {
+
+										ca.get({
+											url: request_url + 'Item/money_pay',
+											data: {
+												phone_data: login_phone,
+												money_data: money
+											},
+											succFn: function(aa) {
+
+												if (aa == 1) {
+
+													var arr = ['home'];
+													ca.sendNotice(arr, 'update', {});
+
+													mod_state(data);
+												} else {
+													ca.prompt('下单失败');
+												}
+
+
+											}
+										})
+
+
+
+										//自己的逻辑                    
+									} else {
+										pay(money, data);
+									}
+								});
+
+							} else {
+
+								if (user_json.money == 0 || !user_json.money) {
+									pay(data);
+								} else {
+									var new_money = money - user_json.money;
+
+									ca.get({
+										url: request_url + 'Item/money_pay',
+										data: {
+											phone_data: login_phone,
+											money_data: user_json.money
+										},
+										succFn: function(aa) {
+
+											if (aa == 1) {
+												var arr = ['home'];
+												ca.sendNotice(arr, 'update', {});
+												pay(new_money, data);
+											} else {
+												ca.prompt('下单失败');
+											}
+
+
+										}
+									})
+								}
+							};
+
+						} else {
+							ca.prompt('下单失败,请重试');
+						}
+					}
+				})
+
+
+			});
+
+
+			function pay(money, id) {
+				var code = ca.getIdCode(10);
+				castapp.pay({
+					name: 'ele订单:' + code,
+					appid: '2016010720042564848',
+					appkey: 'ed4qj6la1xv5wskh0b8m',
+					type: 'alipay',
+					money: 0.1, //money
+					succFn: function() {
+
+						mod_state(id);
+
+
+					}
+				});
+			}
+
+			function mod_state(data) {
+				//吧订单状态改成已付款
+				ca.get({
+					url: request_url + 'Item/mod_state',
+					data: {
+						id_data: data
+					},
+					succFn: function(d) {
+						if (d == 1) {
+							ca.prompt('下单成功');
+
+
+							var arr = ['order'];
+							ca.sendNotice(arr, 'update_order', {});
+
+						} else {
+							ca.prompt('下单失败,请重试');
+						}
+					}
+				})
+			}
+		</script>
+		<script src="../js/mui.pullToRefresh.js"></script>
+		<script src="../js/mui.pullToRefresh.material.js"></script>
+	</body>
+</html>

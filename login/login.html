@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<style type="text/css">
+			body,
+			div,
+			.mui-content,.mui-input-group {
+				background-color: #FFFFFF;
+			}
+
+			.public-margin-top img {
+				width: 30%;
+				height: 30%;
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+			<!--输入mform按下回车键快速创建输入框-->
+			<div class="public-margin-top">
+				<img src="../img/login/logo.png">
+
+				<form class="mui-input-group" style="margin-top: 90px;">
+						 <div class="mui-input-row register-input">
+						    <input type="text" class="mui-input" placeholder="手机号">
+						    <button class="yzm-btn">获取验证码</button>
+						</div>
+
+					<div class="mui-input-row">
+						<input type="password" class="mui-input-password" placeholder="请输入验证码">
+					</div>
+				</form>
+				<button class="public-g-btn btn-block">登&nbsp;录</button>
+				<div style="width:90%;margin:0 auto;">
+					<button class="mui-btn-link mui-pull-left" style="padding: 0px;">忘记密码？</button>
+					<button class="mui-btn-link mui-pull-right" style="padding: 0px;">去注册</button>
+				</div>
+			</div>
+		</div>
+		<script src="../js/castapp.js"></script>
+		<script>
+			ca.init();
+
+
+			var requesr_url = localStorage.getItem('request_url');
+
+
+			var input = ca.tagName('input');
+
+			//获得本界面所有的button
+			var button = ca.tagName('button');
+
+			//登录操作
+			button['0'].addEventListener('tap', function() {
+				var phone = input['0'].value;
+				var password = input['1'].value;
+
+				if (phone == '') {
+					ca.prompt('请输入手机号码');
+					return;
+				}
+				if (password == '') {
+					ca.prompt('请输入密码');
+					return;
+				}
+
+
+				//请求数据库
+				ca.get({
+					url: requesr_url + 'Login/login_do',
+					data: {
+						phone_data: phone,
+						password_data: password,
+					},
+					succFn: function(data) {
+
+
+						if (data == 1) {
+							ca.prompt('登录成功');
+							localStorage.setItem('login_phone', phone);
+
+							var arr = ['home'];
+							ca.sendNotice(arr, 'update', {});
+
+							ca.closeCurrentInterface();
+
+
+						} else if (data == 0) {
+							ca.prompt('密码错误');
+						} else {
+							ca.prompt('手机号码不存在');
+						}
+
+					}
+				})
+
+
+			});
+			//忘记密码
+			button['2'].addEventListener('tap', function() {
+				ca.newInterface({
+					url: '../register/reset-password.html',
+					id: '../register/reset-password.html'
+				})
+			});
+			//去注册
+			button['3'].addEventListener('tap', function() {
+				ca.newInterface({
+					url: '../register/register.html',
+					id: '../register/register.html'
+				})
+			});
+		</script>
+	</body>
+</html>

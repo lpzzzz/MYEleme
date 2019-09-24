@@ -1,0 +1,17 @@
+body {
+	background-color: white;
+}
+* {
+	font-family: 苹方;
+}
+.mui-bar-nav {
+	background-color: #3492E9;
+}
+
+.mui-bar-nav~.mui-content {
+	padding-top: 30px;
+}
+
+.mui-bar-nav #history-c {
+	color: #000000;
+}

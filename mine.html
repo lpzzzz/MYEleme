@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+
+			* {
+				font-family: 苹方;
+			}
+
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 44px;
+				background-color: #f7f7f8;
+			}
+
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				width: auto;
+			}
+
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+
+			.mui-page {
+				display: none;
+			}
+
+			.mui-pages .mui-page {
+				display: block;
+			}
+
+			.mui-page .mui-table-view:first-child {
+				margin-top: 15px;
+			}
+
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+
+			.mui-table-view {
+				margin-top: 20px;
+			}
+
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+
+			.head {
+				height: 40px;
+			}
+
+			#head {
+				line-height: 40px;
+			}
+
+			.head-img {
+				width: 40px;
+				height: 40px;
+			}
+
+			#head-img1 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+
+			.update {
+				font-style: normal;
+				color: #999999;
+				margin-right: -25px;
+				font-size: 15px
+			}
+
+			.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+
+			.mui-ios .mui-navbar .mui-bar .mui-title {
+				position: static;
+			}
+
+			/*问题反馈在setting页面单独的css*/
+			#feedback .mui-popover {
+				position: fixed;
+			}
+
+			#feedback .mui-table-view:last-child {
+				margin-bottom: 0px;
+			}
+
+			#feedback .mui-table-view:first-child {
+				margin-top: 0px;
+			}
+
+			.mui-plus.mui-plus-stream .mui-stream-hidden {
+				display: none !important;
+			}
+
+			#head-color {
+				background-color: #3492E9;
+				/* 我的 头部 背景颜色*/
+			}
+
+			.mui-bar .mui-btn-link {
+				color: #FFFFFF;
+			}
+
+			.mui-title {
+				color: #FFFFFF;
+			}
+
+			.mui-page-content {
+				margin-top: -17px;
+			}
+
+			#img-dx {
+				/* width: 30px;
+				height: 30px; */
+				width: 10%;
+				height: 10%;
+			}
+
+			#border-rit {
+				border-right: #EEEEEE solid 1px;
+			}
+
+			.mui-table-view-cell {
+				background-color: #FFFFFF;
+			}
+
+			/*问题反馈在setting页面单独的css==end*/
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/feedback.css" />
+	</head>
+
+	<body class="mui-fullscreen">
+		<!--页面主结构开始-->
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<!-- background: #3492E9; -->
+		<!--页面主结构结束-->
+		<!--单页面开始-->
+		<div id="setting" class="mui-page">
+			<!--页面标题栏开始-->
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" id="head-color">
+				<!-- <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button> -->
+				<h1 class="mui-center mui-title">我的</h1>
+			</div>
+			<!--页面标题栏结束-->
+			<!--页面主内容区开始-->
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell mui-media" style="background-color: #ffffff;">
+								<a class="mui-navigate-right" href="#account">
+									<img class="mui-media-object mui-pull-left head-img" id="head-img" src="img/elemelogo/eleme_logo.png" style="margin-bottom: 50px; mar-top:20px;">
+									<div class="mui-media-body" style="margin-top:20px; font-weight: bold;">
+										登录 / 注册
+										<p class='mui-ellipsis' style="font-weight: 100; font-size:13px ;">
+											<span style="margin-bottom: -20px;">登录后享受更多特权</span></p>
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view mui-table-view-chevron mui-grid-view" style="margin: -1px;border: 0px;padding: 0px;">
+							<li class="mui-table-view-cell mui-media mui-col-xs-6" id="border-rit">
+								<a href="#">
+									<img class="mui-media-object" src="img/login/hb.png" id="img-dx">
+									<div class="mui-media-body" style="font-size: 13px; margin-bottom: 6px;">红包</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6">
+								<a href="#">
+									<img class="mui-media-object img-dx" src="img/login/jb.png" id="img-dx">
+									<div class="mui-media-body" style="font-size: 13px; margin-bottom: 6px;">金币</div>
+								</a></li>
+						</ul>
+
+						<ul class="mui-table-view mui-table-view-chevron" style=" margin-top: 10px;">
+							<li class="mui-table-view-cell mui-media">
+								<a class="mui-navigate-right" style="height: 40px;">
+									<img class="mui-media-object mui-pull-left" src="img/login/location.png" style="width:25px;height: 25px;">
+									<p style="vertical-align: middle;">我的地址</p>
+								</a>
+							</li>
+						</ul>
+
+						<ul class="mui-table-view mui-table-view-chevron" style=" margin-top: 10px;">
+							<li class="mui-table-view-cell mui-media">
+								<a class="mui-navigate-right" style="height: 40px;">
+									<img class="mui-media-object mui-pull-left" src="img/login/jbsc.png" style="width:20px;height: 20px;">
+									<p style="vertical-align: middle;">金币商城</p>
+								</a>
+							</li>
+						</ul>
+
+						<ul class="mui-table-view mui-table-view-chevron" style=" margin-top: 10px;">
+							<li class="mui-table-view-cell mui-media">
+								<a class="mui-navigate-right" style="height: 40px;">
+									<img class="mui-media-object mui-pull-left" src="img/login/kefu.png" style="width:20px;height: 20px;">
+									<p style="vertical-align: middle;">我的客服</p>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+								<a class="mui-navigate-right" style="height: 40px;">
+									<img class="mui-media-object mui-pull-left" src="img/login/guize.png" style="width:25px;height: 25px; margin-bottom: 15px;">
+									<p style="vertical-align: middle;">规则中心</p>
+								</a>
+							</li>
+						</ul>
+
+						<span class="yinsi">
+							<a class="mui-navigate-right" style="height: 40px;">
+								<p style="text-align: center;color: #3492E9; margin-top: 30px;">隐私政策</p>
+							</a>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--页面主内容区结束-->
+		</div>
+		<!--单页面结束-->
+
+	</body>
+	<script src="js/mui.min.js "></script>
+	<script src="js/mui.view.js "></script>
+	<script src='js/feedback.js'></script>
+	<script>
+		mui.init();
+		//初始化单页view
+		var viewApi = mui('#app').view({
+			defaultPage: '#setting'
+		});
+		//初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll();
+		//分享操作
+		var shares = {};
+
+		mui.plusReady(function() {
+			plus.share.getServices(function(s) {
+				if (s && s.length > 0) {
+					for (var i = 0; i < s.length; i++) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+				}
+			}, function() {
+				console.log("获取分享服务列表失败");
+			});
+		});
+
+		setTimeout(function() {
+			defaultImg();
+			setTimeout(function() {
+				initImgPreview();
+			}, 300);
+		}, 500);
+
+
+		/* 跳转登录页面 */
+		// 加载事件
+		mui.plusReady(function() {
+			// 给订单注册轻击事件打开 订单详情界面事件
+			mui(".mui-table-view-cell").on("tap", "a", function() {
+				//  获取 商品名称
+				var title = this.getAttribute("title");
+				// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+				mui.openWindow({
+					url: "login/login.html",
+					id: "login/login.html",
+
+					extras: {
+						// ..... //自定义扩展参数，可以用来处理页面间传值
+						// 我们需要传递的是 商品名称
+						name: title
+					},
+					createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 100 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...' //等待对话框上显示的提示内容
+					}
+				});
+			});
+		});
+		
+		mui.plusReady(function() {
+			// 给订单注册轻击事件打开 订单详情界面事件
+			mui(".yinsi").on("tap", "a", function() {
+				//  获取 商品名称
+				var title = this.getAttribute("title");
+				// 打开订单详情页面 通过查看API文档的窗口管理打开新页面 复制里面的代码即可
+				mui.openWindow({
+					url: "login/login.html",
+					id: "login/login.html",
+		
+					extras: {
+						// ..... //自定义扩展参数，可以用来处理页面间传值
+						// 我们需要传递的是 商品名称
+						name: title
+					},
+					createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+						duration: 100 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...' //等待对话框上显示的提示内容
+					}
+				});
+			});
+		});
+	</script>
+
+</html>
